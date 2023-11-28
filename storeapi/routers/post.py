@@ -18,3 +18,8 @@ async def create_post(post: UserPostIn):
 @router.get("/post", response_model=list[UserPost])
 async def get_all_posts():
     return list(post_table.values())
+
+
+@router.get("/get")
+async def get_ownbackup():
+    return list()
