@@ -4,3 +4,4 @@ isort
 SQLAlchemy
 mariadb 
 pymysql
+faker
