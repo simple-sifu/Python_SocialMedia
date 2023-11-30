@@ -91,13 +91,13 @@ session = Session()
 fake = Faker()
 
 # Generate and insert fake data into the table
-num_fake_records = 5  # Change this value based on your needs
+num_fake_records = 100000  # Change this value based on your needs
 fake_records = []
 
 for _ in range(num_fake_records):
     fake_data = {
-        'id': fake.random_int(min=1000000, max=9000000),
-        'service_id': fake.random_int(min=1000000, max=9000000),
+        'id': fake.random_int(min=1000000, max=90000000000),
+        'service_id': fake.random_int(min=1000000, max=90000000000),
         'name': fake.word(),
         'num_items': fake.random_int(min=1, max=100),
         'created_at': datetime.now(),
@@ -129,12 +129,12 @@ for _ in range(num_fake_records):
     }
     fake_records.append(fake_data)
 
-num = 0
-for record in fake_records:
-    num += 1
-    print(" ****** record ", num, " ******")
-    print(record)
-    print(" ******************************")
+# num = 0
+# for record in fake_records:
+#     num += 1
+#     print(" ****** record ", num, " ******")
+#     print(record)
+#     print(" ******************************")
 
 
 
@@ -148,11 +148,15 @@ for section in sections:
         f"id: {section.id}, service_id: {section.service_id}, name: {section.name}"
     )
 
+num = 0
 try:
+
     for fake_record in fake_records:
+        num +=1
         data = Section(**fake_record)
         session.add(data)
         session.commit()
+        print("**** record number ", num, " *****")
 except Exception as e:
     session.rollback()
     print(f"Error inserting fake data: {e}")
