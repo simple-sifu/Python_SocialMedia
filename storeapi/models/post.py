@@ -1,10 +1,9 @@
-# from pydantic import BaseModel
+from pydantic import BaseModel
+
+# BaseModel is using for type declaration
+class UserPostIn(BaseModel):
+    body: str
 
 
-# # BaseModel is using for type declaration
-# class UserPostIn(BaseModel):
-#     body: str
-
-
-# class UserPost(UserPostIn):
-#     id: int
+class UserPost(UserPostIn):
+    id: int
