@@ -31,3 +31,11 @@ async def test_create_post_missing_data(async_client: AsyncClient):
     )
 
     assert response.status_code == 422
+
+
+@pytest.mark.anyio
+async def test_all_posts(async_client: AsyncClient, created_post: dict):
+    response = await async_client.get('/post')
+
+    assert response.status_code == 200
+    assert response.json() == [created_post]
