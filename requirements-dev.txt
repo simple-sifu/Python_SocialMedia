@@ -5,3 +5,4 @@ SQLAlchemy
 mariadb 
 pymysql
 faker
+pytest
