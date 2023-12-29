@@ -47,7 +47,6 @@ async def test_create_post_missing_data(async_client: AsyncClient):
 async def test_get_all_posts(async_client: AsyncClient, created_post: dict):
     response = await async_client.get('/post')
 
-    print("created_post =", created_post)
     assert response.status_code == 200
     assert response.json() == [created_post]
 
